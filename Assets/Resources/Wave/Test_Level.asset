@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41efef2c69b39b647a014dba8e708837, type: 3}
+  m_Name: Test_Level
+  m_EditorClassIdentifier: Assembly-CSharp::General.Waves.WaveConfig
+  Entries:
+  - EnemyPrefab: {fileID: 5620182583248793320, guid: a84822cfefb5cca48b338cc9690c6cae, type: 3}
+    SpawnTime: 2
+    SpawnPointIndex: 0
+  - EnemyPrefab: {fileID: 7246784327127112617, guid: c9d59418843f4c546bb1d06b76b01058, type: 3}
+    SpawnTime: 8
+    SpawnPointIndex: 0
+  - EnemyPrefab: {fileID: 5620182583248793320, guid: a84822cfefb5cca48b338cc9690c6cae, type: 3}
+    SpawnTime: 10
+    SpawnPointIndex: 0
+  - EnemyPrefab: {fileID: 6192124057817161852, guid: 4aac9bc5be075f1489cf55ff3437d64e, type: 3}
+    SpawnTime: 14
+    SpawnPointIndex: 2
+  - EnemyPrefab: {fileID: 7246784327127112617, guid: c9d59418843f4c546bb1d06b76b01058, type: 3}
+    SpawnTime: 22
+    SpawnPointIndex: 1
+  - EnemyPrefab: {fileID: 6192124057817161852, guid: 4aac9bc5be075f1489cf55ff3437d64e, type: 3}
+    SpawnTime: 30
+    SpawnPointIndex: 0
+  - EnemyPrefab: {fileID: 5476925676099108456, guid: f5db67f835234904eac21d9b207fdb81, type: 3}
+    SpawnTime: 40
+    SpawnPointIndex: 3
+  - EnemyPrefab: {fileID: 5620182583248793320, guid: a84822cfefb5cca48b338cc9690c6cae, type: 3}
+    SpawnTime: 48
+    SpawnPointIndex: 0
+  - EnemyPrefab: {fileID: 5476925676099108456, guid: f5db67f835234904eac21d9b207fdb81, type: 3}
+    SpawnTime: 48
+    SpawnPointIndex: 2
+  - EnemyPrefab: {fileID: 3984357657745025383, guid: e641e4280261dbb4885167549d04dc36, type: 3}
+    SpawnTime: 56
+    SpawnPointIndex: 2
+  - EnemyPrefab: {fileID: 6192124057817161852, guid: 4aac9bc5be075f1489cf55ff3437d64e, type: 3}
+    SpawnTime: 60
+    SpawnPointIndex: 1
+  - EnemyPrefab: {fileID: 7246784327127112617, guid: c9d59418843f4c546bb1d06b76b01058, type: 3}
+    SpawnTime: 64
+    SpawnPointIndex: 3
+  - EnemyPrefab: {fileID: 5476925676099108456, guid: f5db67f835234904eac21d9b207fdb81, type: 3}
+    SpawnTime: 68
+    SpawnPointIndex: 0
+  - EnemyPrefab: {fileID: 5476925676099108456, guid: f5db67f835234904eac21d9b207fdb81, type: 3}
+    SpawnTime: 72
+    SpawnPointIndex: 1
+  - EnemyPrefab: {fileID: 6192124057817161852, guid: 4aac9bc5be075f1489cf55ff3437d64e, type: 3}
+    SpawnTime: 80
+    SpawnPointIndex: 3
+  - EnemyPrefab: {fileID: 3984357657745025383, guid: e641e4280261dbb4885167549d04dc36, type: 3}
+    SpawnTime: 88
+    SpawnPointIndex: 0
+  - EnemyPrefab: {fileID: 5476925676099108456, guid: f5db67f835234904eac21d9b207fdb81, type: 3}
+    SpawnTime: 96
+    SpawnPointIndex: 2
+  - EnemyPrefab: {fileID: 7246784327127112617, guid: c9d59418843f4c546bb1d06b76b01058, type: 3}
+    SpawnTime: 104
+    SpawnPointIndex: 0
+  - EnemyPrefab: {fileID: 5476925676099108456, guid: f5db67f835234904eac21d9b207fdb81, type: 3}
+    SpawnTime: 108
+    SpawnPointIndex: 1
+  - EnemyPrefab: {fileID: 6192124057817161852, guid: 4aac9bc5be075f1489cf55ff3437d64e, type: 3}
+    SpawnTime: 112
+    SpawnPointIndex: 2
+  - EnemyPrefab: {fileID: 7246784327127112617, guid: c9d59418843f4c546bb1d06b76b01058, type: 3}
+    SpawnTime: 120
+    SpawnPointIndex: 1
+  - EnemyPrefab: {fileID: 5476925676099108456, guid: f5db67f835234904eac21d9b207fdb81, type: 3}
+    SpawnTime: 120
+    SpawnPointIndex: 3
+  - EnemyPrefab: {fileID: 3984357657745025383, guid: e641e4280261dbb4885167549d04dc36, type: 3}
+    SpawnTime: 130
+    SpawnPointIndex: 1
+  - EnemyPrefab: {fileID: 5476925676099108456, guid: f5db67f835234904eac21d9b207fdb81, type: 3}
+    SpawnTime: 138
+    SpawnPointIndex: 0
+  - EnemyPrefab: {fileID: 5476925676099108456, guid: f5db67f835234904eac21d9b207fdb81, type: 3}
+    SpawnTime: 140
+    SpawnPointIndex: 3
+  - EnemyPrefab: {fileID: 6192124057817161852, guid: 4aac9bc5be075f1489cf55ff3437d64e, type: 3}
+    SpawnTime: 148
+    SpawnPointIndex: 0
+  - EnemyPrefab: {fileID: 5476925676099108456, guid: f5db67f835234904eac21d9b207fdb81, type: 3}
+    SpawnTime: 154
+    SpawnPointIndex: 2
+  - EnemyPrefab: {fileID: 7246784327127112617, guid: c9d59418843f4c546bb1d06b76b01058, type: 3}
+    SpawnTime: 154
+    SpawnPointIndex: 3
+  - EnemyPrefab: {fileID: 3984357657745025383, guid: e641e4280261dbb4885167549d04dc36, type: 3}
+    SpawnTime: 162
+    SpawnPointIndex: 3
+  - EnemyPrefab: {fileID: 5476925676099108456, guid: f5db67f835234904eac21d9b207fdb81, type: 3}
+    SpawnTime: 164
+    SpawnPointIndex: 1
+  - EnemyPrefab: {fileID: 5476925676099108456, guid: f5db67f835234904eac21d9b207fdb81, type: 3}
+    SpawnTime: 170
+    SpawnPointIndex: 3
+  - EnemyPrefab: {fileID: 5476925676099108456, guid: f5db67f835234904eac21d9b207fdb81, type: 3}
+    SpawnTime: 170
+    SpawnPointIndex: 0
+  - EnemyPrefab: {fileID: 6192124057817161852, guid: 4aac9bc5be075f1489cf55ff3437d64e, type: 3}
+    SpawnTime: 178
+    SpawnPointIndex: 2
