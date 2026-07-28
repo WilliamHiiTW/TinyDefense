@@ -137,6 +137,7 @@ MonoBehaviour:
   UnitAnimator: {fileID: 1044078206602840114}
   CurrentState: 0
   HealthBar: {fileID: 5058424701335957737}
+  IsEnemyUnit: 0
   ProjectileController: {fileID: 741320076301181005}
 --- !u!114 &741320076301181005
 MonoBehaviour:
@@ -150,8 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63852d87fde8a8248b99b772f7d4d449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Controller.ProjectileController
-  ProjectilePrefab: {fileID: 3140726677608009246, guid: 6f00ca0bbb139e64380a72176e783f7f, type: 3}
-  ProjectileAmount: 5
+  ProjectilePrefab: {fileID: 2639355941041408308, guid: a77515e1cb747a443b3e5d940a12b0c9, type: 3}
+  ProjectileAmount: 3
 --- !u!61 &118332924843823410
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -286,7 +287,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &1137134962144395756
 MonoBehaviour:

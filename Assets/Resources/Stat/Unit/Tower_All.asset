@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Tower_All
   m_EditorClassIdentifier: Assembly-CSharp::General.BaseUnitStat
   Id: Tower
-  Health: 10
+  Health: 50
   Damage: 0
   Defense: 0
   Speed: 0
-  AttackRange: 0
-  AttackDelay: 0
-  AttackInterval: 0
+  AttackRange: 5
+  AttackDelay: 0.5
+  AttackInterval: 2

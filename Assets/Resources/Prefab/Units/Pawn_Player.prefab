@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 3780917182299616103}
   - component: {fileID: 2084676968973845903}
   - component: {fileID: 1132162612234755583}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pawn_Player
-  m_TagString: Untagged
+  m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -225,6 +225,7 @@ MonoBehaviour:
   UnitAnimator: {fileID: 2084676968973845903}
   CurrentState: 0
   HealthBar: {fileID: 6516042180078613106}
+  IsEnemyUnit: 0
   InteractTargetContactFilter2D:
     useTriggers: 0
     useLayerMask: 1
@@ -314,7 +315,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &894990619577990645
 MonoBehaviour:

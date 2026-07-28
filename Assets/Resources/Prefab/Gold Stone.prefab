@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2531985478830146334}
   - component: {fileID: 2505996180289232601}
   m_Layer: 10
-  m_Name: Gold Stone 6_0
+  m_Name: Gold Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7380142637463262645, guid: 113f333b9e6c5b54dba00265dc242373, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

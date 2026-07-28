@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6853774617681920647}
   - component: {fileID: 2639355941041408308}
   m_Layer: 0
-  m_Name: Arrow_To_Left
+  m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,6 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2589e19be9970746861a44151894f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::General.Battle.Projectile
-  Damage: 2
+  Damage: 1.5
   Speed: 2
   LifeTime: 3

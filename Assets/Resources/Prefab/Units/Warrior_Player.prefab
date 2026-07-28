@@ -61,7 +61,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &8223142192360383055
 MonoBehaviour:
@@ -328,6 +328,7 @@ MonoBehaviour:
   UnitAnimator: {fileID: 3104043122760315413}
   CurrentState: 0
   HealthBar: {fileID: 4896363000186053381}
+  IsEnemyUnit: 0
 --- !u!1001 &3563919189466427679
 PrefabInstance:
   m_ObjectHideFlags: 0

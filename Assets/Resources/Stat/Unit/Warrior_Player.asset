@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::General.BaseUnitStat
   Id: Warrior_Player
   Health: 12
-  Damage: 1
+  Damage: 1.5
   Defense: 0
   Speed: 0.5
   AttackRange: 1

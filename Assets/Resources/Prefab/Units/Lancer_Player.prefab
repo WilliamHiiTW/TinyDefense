@@ -135,7 +135,7 @@ BoxCollider2D:
   m_Offset: {x: -0.03616333, y: 0.3905608}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.6, y: 0.2}
     oldSize: {x: 0.73999995, y: 1.5530273}
     newSize: {x: 3.2, y: 3.20625}
     adaptiveTilingThreshold: 0.5
@@ -225,6 +225,7 @@ MonoBehaviour:
   UnitAnimator: {fileID: 2742145346236459963}
   CurrentState: 0
   HealthBar: {fileID: 1929216318242498367}
+  IsEnemyUnit: 0
 --- !u!1 &8694370184250339173
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +287,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &696888791378788926
 MonoBehaviour:
@@ -410,7 +411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 899637465265638653, guid: 1d7a29f63f1b60e4993f16d28903af83, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.16697001
+      value: 0.618
       objectReference: {fileID: 0}
     - target: {fileID: 899637465265638653, guid: 1d7a29f63f1b60e4993f16d28903af83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

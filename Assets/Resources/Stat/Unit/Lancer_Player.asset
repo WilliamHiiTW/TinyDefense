@@ -16,7 +16,7 @@ MonoBehaviour:
   Health: 8
   Damage: 2
   Defense: 0
-  Speed: 2
+  Speed: 1.5
   AttackRange: 1
   AttackDelay: 0.5
   AttackInterval: 1

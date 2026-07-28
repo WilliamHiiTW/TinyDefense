@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::General.BaseUnitStat
   Id: Monk_Player
   Health: 3
-  Damage: 2
+  Damage: 2.5
   Defense: 0
   Speed: 1
   AttackRange: 5
-  AttackDelay: 4
+  AttackDelay: 1
   AttackInterval: 3
