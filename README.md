@@ -1,15 +1,15 @@
-# [GAME TITLE]
+# [TINY DEFENSE]
 
-[One or two sentence pitch — e.g. "A lightweight 2D tower-defense/RTS hybrid where you spawn units to push down a lane, gather resources, and defend your tower."]
+A lightweight 2D tower-defense/RTS hybrid where you spawn units to push down a lane, gather resources, and defend your tower.
 
-Built with Unity as a portfolio project. Currently in active development.
+Built with Unity as a portfolio project.
 
 ## Screenshots / Gameplay
 
-<!-- Add screenshots or a GIF here, e.g.: -->
-<!-- ![Gameplay](docs/screenshot-01.png) -->
-
-*(placeholder — add screenshots/gameplay GIFs here)*
+<img width="1907" height="1070" alt="image" src="https://github.com/user-attachments/assets/a546aaae-6276-4594-acb5-df93a80cf16d" />
+<img width="1912" height="1072" alt="image" src="https://github.com/user-attachments/assets/722db864-009f-44d3-9585-a14624c2a119" />
+<img width="1910" height="1067" alt="image" src="https://github.com/user-attachments/assets/3ead618c-f372-4aef-8d5d-baba04e120ca" />
+<img width="1912" height="1070" alt="image" src="https://github.com/user-attachments/assets/e5d332ea-7a59-4b03-9a7b-ded865ae4e58" />
 
 ## Features
 
@@ -21,7 +21,7 @@ Built with Unity as a portfolio project. Currently in active development.
 
 ## Tech Stack
 
-- Unity [VERSION — fill in]
+- Unity [VERSION — v6000.5.1f1]
 - C#
 - Universal Render Pipeline (URP)
 - TextMesh Pro (UI)
@@ -48,15 +48,8 @@ Assets/
 
 1. Clone the repo.
 2. Download the required third-party art assets — see [ATTRIBUTION.md](ATTRIBUTION.md) for the download link and where to place them (the project will show missing sprites without this step).
-3. Open the project folder in Unity Hub with Unity [VERSION — fill in].
+3. Open the project folder in Unity Hub with Unity [VERSION — v6000.5.1f1].
 4. Open the main scene under `Assets/Scenes/` and press Play.
-
-## Known Limitations / Roadmap
-
-*(This project is still in progress — a good place to note what's next, e.g.)*
-- [ ] `UnitManager.cs` is currently a stub for future centralized unit tracking
-- [ ] Add more unit/enemy variety
-- [ ] Polish UI/UX
 
 ## License
 
