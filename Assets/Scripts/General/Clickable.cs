@@ -9,6 +9,7 @@ namespace General
     [RequireComponent(typeof(Collider2D))]
     public class Clickable : MonoBehaviour
     {
+        public static bool HasUnitSelected;
         [Header("Drag Settings")]
         [Tooltip("Only colliders on this layer are considered valid drop targets.")]
         [SerializeField] private LayerMask pathZoneLayer;
@@ -34,6 +35,7 @@ namespace General
                 return;
 
             _isDragging = true;
+            HasUnitSelected = true;
             _originalPosition = transform.position;
 
             if (_spriteRenderer != null)
@@ -59,7 +61,7 @@ namespace General
                 return;
 
             _isDragging = false;
-
+            HasUnitSelected = false;
             if (_spriteRenderer != null)
                 _spriteRenderer.sortingOrder = _originalSortingOrder;
 
