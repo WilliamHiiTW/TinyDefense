@@ -1,8 +1,20 @@
-# [TINY DEFENSE]
+# TINY DEFENSE
 
 A lightweight 2D tower-defense/RTS hybrid where you spawn units to push down a lane, gather resources, and defend your tower.
 
 Built with Unity as a portfolio project.
+
+## Download
+
+Download the latest playable Windows build from the **Releases** page:
+
+➡️ https://github.com/WilliamHiiTW/TinyDefense/releases/latest
+
+Extract the ZIP file and run `Tiny Defense.exe`.
+
+> **Platform:** Windows (64-bit)
+
+---
 
 ## Screenshots / Gameplay
 
