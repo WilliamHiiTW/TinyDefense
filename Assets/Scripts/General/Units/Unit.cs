@@ -1,6 +1,7 @@
 using Controller;
 using General.Enums;
 using Manager;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,7 +26,7 @@ namespace General
         protected float _currentHealth;
 
         /// <summary>True if this unit belongs to the enemy side.</summary>
-        public bool IsEnemyUnit { get; set; }
+        public bool IsEnemyUnit;
 
         private void Start()
         {
@@ -66,24 +67,61 @@ namespace General
                 ? GameManager.instance.PlayerUnitFilter2D
                 : GameManager.instance.EnemyUnitFilter2D;
 
-            return IsTargetInAttackRange(enemyFilter);
-        }
-
-        /// <summary>Checks whether any collider matching <paramref name="targetFilter"/> is within attack range.</summary>
-        protected bool IsTargetInAttackRange(ContactFilter2D targetFilter)
-        {
-            ColliderArray2D hits = Physics2D.OverlapCircle(transform.position, BaseUnitStat.AttackRange, targetFilter);
-            foreach (Collider2D hit in hits)
+            using NativeArray<RaycastHit2D> hits = GetTargetsAhead(enemyFilter);
+            foreach (RaycastHit2D hit in hits)
             {
-                if (hit.gameObject != gameObject && hit.gameObject != Spawner && hit.gameObject.layer != gameObject.layer)
-                {
-                    hits.Dispose();
+                if (IsValidTarget(hit) && hit.collider.gameObject.TryGetComponent(out Unit unit) && unit.IsActivated())
                     return true;
-                }
             }
 
-            hits.Dispose();
             return false;
+        }
+
+        /// <summary>Checks whether any collider matching <paramref name="targetFilter"/> is directly ahead within attack range.</summary>
+        protected bool IsTargetInAttackRange(ContactFilter2D targetFilter)
+        {
+            using NativeArray<RaycastHit2D> hits = GetTargetsAhead(targetFilter);
+            foreach (RaycastHit2D hit in hits)
+            {
+                if (IsValidTarget(hit))
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Casts a straight line in this unit's facing direction, out to its attack range,
+        /// and returns every collider matching <paramref name="targetFilter"/> along that line.
+        /// A straight-line query (rather than a radius) matters here since lanes/paths run
+        /// parallel to each other — a radius check would "see" units in a neighboring lane,
+        /// while a same-height raycast only ever hits targets in this unit's own lane.
+        /// The caller is responsible for disposing the returned NativeArray (a `using`
+        /// statement/declaration handles this automatically).
+        /// </summary>
+        protected NativeArray<RaycastHit2D> GetTargetsAhead(ContactFilter2D targetFilter)
+        {
+            Vector2 direction = new Vector2(Mathf.Sign(transform.localScale.x), 0f);
+            Vector2 origin = transform.position;
+            return Physics2D.Raycast(origin, direction, targetFilter, BaseUnitStat.AttackRange, Allocator.Temp);
+        }
+
+        /// <summary>Excludes self and this unit's own spawner/tower from a raycast hit.</summary>
+        protected bool IsValidTarget(RaycastHit2D hit)
+        {
+            return hit.collider.gameObject != gameObject
+                && hit.collider.gameObject != Spawner
+                && hit.collider.gameObject.layer != gameObject.layer;
+        }
+
+        /// <summary>
+        /// Clamps an X position to the level's configured playable bounds
+        /// (<see cref="GameManager.LevelMinX"/> / <see cref="GameManager.LevelMaxX"/>),
+        /// so units can never walk off the edge of the map when nothing else stops them.
+        /// </summary>
+        protected float ClampToLevelBounds(float x)
+        {
+            return Mathf.Clamp(x, GameManager.instance.LevelMinX, GameManager.instance.LevelMaxX);
         }
 
         public float TakeDamage(float damage)
@@ -126,7 +164,8 @@ namespace General
                 return;
 
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, BaseUnitStat.AttackRange);
+            Vector3 direction = new Vector3(Mathf.Sign(transform.localScale.x), 0f, 0f);
+            Gizmos.DrawLine(transform.position, transform.position + direction * BaseUnitStat.AttackRange);
         }
     }
 }

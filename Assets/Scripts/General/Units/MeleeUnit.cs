@@ -1,6 +1,7 @@
 using Controller;
 using General.Enums;
 using Manager;
+using Unity.Collections;
 using UnityEngine;
 
 namespace General.Units
@@ -80,17 +81,21 @@ namespace General.Units
             if (_attackComplete)
                 return;
 
-            ColliderArray2D hits = Physics2D.OverlapCircle(transform.position, BaseUnitStat.AttackRange, GameManager.instance.EnemyUnitFilter2D);
-            foreach (Collider2D hit in hits)
+            ContactFilter2D targetFilter = IsEnemyUnit
+                ? GameManager.instance.PlayerUnitFilter2D
+                : GameManager.instance.EnemyUnitFilter2D;
+
+            using (NativeArray<RaycastHit2D> hits = GetTargetsAhead(targetFilter))
             {
-                if (hit.gameObject != gameObject && hit.gameObject != Spawner && hit.gameObject.layer != gameObject.layer)
+                foreach (RaycastHit2D hit in hits)
                 {
-                    if (hit.TryGetComponent(out Unit unit))
+                    if (IsValidTarget(hit) && hit.collider.TryGetComponent(out Unit unit) && unit.IsActivated())
+                    {
                         unit.TakeDamage(BaseUnitStat.Damage);
+                    }
                 }
             }
 
-            hits.Dispose();
             _attackComplete = true;
         }
 
@@ -125,10 +130,8 @@ namespace General.Units
 
         private void MoveForward()
         {
-            transform.position = new Vector3(
-                transform.position.x + (BaseUnitStat.Speed * Time.deltaTime * transform.localScale.x),
-                transform.position.y,
-                transform.position.z);
+            float targetX = transform.position.x + (BaseUnitStat.Speed * Time.deltaTime * transform.localScale.x);
+            transform.position = new Vector3(ClampToLevelBounds(targetX), transform.position.y, transform.position.z);
         }
     }
 }

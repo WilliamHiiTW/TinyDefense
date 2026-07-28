@@ -78,8 +78,9 @@ namespace General.Units
                 return;
 
             Projectile spawned = ProjectileController.Spawn();
+            Vector2 direction = new Vector2(Mathf.Sign(transform.localScale.x), 0f);
             Vector2 spawnPosition = new Vector2(transform.position.x + (1f * transform.localScale.x), transform.position.y);
-            spawned.OnStart(spawnPosition, transform.localScale.x);
+            spawned.OnStart(spawnPosition, direction, gameObject.layer);
             _arrowShot = true;
         }
 
@@ -114,10 +115,8 @@ namespace General.Units
 
         private void MoveForward()
         {
-            transform.position = new Vector3(
-                transform.position.x + (BaseUnitStat.Speed * Time.deltaTime * transform.localScale.x),
-                transform.position.y,
-                transform.position.z);
+            float targetX = transform.position.x + (BaseUnitStat.Speed * Time.deltaTime * transform.localScale.x);
+            transform.position = new Vector3(ClampToLevelBounds(targetX), transform.position.y, transform.position.z);
         }
     }
 }

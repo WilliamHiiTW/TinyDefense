@@ -29,6 +29,25 @@ namespace General.Units
         {
             base.Activate();
             _direction = transform.localScale.x;
+
+            if (!IsEnemyUnit)
+            {
+                GameManager.instance.ActivePlayerPawnCount++;
+            }
+            else
+            {
+                GameManager.instance.ActiveEnemyPawnCount++;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (!IsEnemyUnit && Activated)
+                GameManager.instance.ActivePlayerPawnCount--;
+            else if (IsEnemyUnit && Activated)
+            {
+                GameManager.instance.ActiveEnemyPawnCount--;
+            }
         }
 
         private void Update()
@@ -124,7 +143,7 @@ namespace General.Units
                 {
                     _isCarryingResource = false;
                     _interactDuration = 0f;
-                    GameManager.instance.PlayerGold += 1;
+                    if(!IsEnemyUnit) GameManager.instance.PlayerGold += 1;
                     AnimationController.SetBoolAnimation(UnitAnimationController.ResourceCollectedBoolName, false);
                     FlipFacing();
                 }
@@ -146,10 +165,8 @@ namespace General.Units
         private void MoveForward()
         {
             float direction = _isCarryingResource ? -_direction : _direction;
-            transform.position = new Vector3(
-                transform.position.x + (BaseUnitStat.Speed * Time.deltaTime * direction),
-                transform.position.y,
-                transform.position.z);
+            float targetX = transform.position.x + (BaseUnitStat.Speed * Time.deltaTime * direction);
+            transform.position = new Vector3(ClampToLevelBounds(targetX), transform.position.y, transform.position.z);
         }
     }
 }

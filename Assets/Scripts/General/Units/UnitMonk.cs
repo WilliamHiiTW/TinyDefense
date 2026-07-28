@@ -1,10 +1,16 @@
 using Controller;
 using General.Enums;
+using Unity.Collections;
 using UnityEngine;
 
 namespace General.Units
 {
-    /// <summary>Support unit that walks the lane and heals the nearest injured allied unit in range.</summary>
+    /// <summary>
+    /// Support unit that walks the lane and heals the nearest injured allied unit ahead.
+    /// If an ally is blocking the path but is already at full health, the monk waits
+    /// (Idle) rather than walking through it; it only resumes running once the path
+    /// ahead is clear.
+    /// </summary>
     public class UnitMonk : Unit
     {
         public ContactFilter2D HealTargetContactFilter2D;
@@ -75,17 +81,18 @@ namespace General.Units
             if (_healComplete)
                 return;
 
-            ColliderArray2D hits = Physics2D.OverlapCircle(transform.position, BaseUnitStat.AttackRange, HealTargetContactFilter2D);
-            foreach (Collider2D hit in hits)
+            using (NativeArray<RaycastHit2D> hits = GetTargetsAhead(HealTargetContactFilter2D))
             {
-                if (hit.gameObject == gameObject || hit.gameObject == Spawner)
-                    continue;
+                foreach (RaycastHit2D hit in hits)
+                {
+                    if (hit.collider.gameObject == gameObject || hit.collider.gameObject == Spawner)
+                        continue;
 
-                if (hit.TryGetComponent(out Unit unit) && unit.IsActivated() && !unit.IsFullHealth())
-                    unit.TakeDamage(-BaseUnitStat.Damage);
+                    if (hit.collider.TryGetComponent(out Unit unit) && unit.IsActivated() && !unit.IsFullHealth())
+                        unit.TakeDamage(-BaseUnitStat.Damage);
+                }
             }
 
-            hits.Dispose();
             _healComplete = true;
         }
 
@@ -112,34 +119,36 @@ namespace General.Units
 
         private UnitState GetTargetState()
         {
-            return HasHealTargetAhead(HealTargetContactFilter2D) ? UnitState.Heal : UnitState.Run;
+            if (!TryGetUnitAhead(HealTargetContactFilter2D, out Unit unitAhead))
+                return UnitState.Run;
+
+            return unitAhead.IsFullHealth() ? UnitState.Idle : UnitState.Heal;
         }
 
-        private bool HasHealTargetAhead(ContactFilter2D targetFilter)
+        /// <summary>Finds the first active ally directly ahead, regardless of its health.</summary>
+        private bool TryGetUnitAhead(ContactFilter2D targetFilter, out Unit unitAhead)
         {
-            ColliderArray2D hits = Physics2D.OverlapCircle(transform.position, BaseUnitStat.AttackRange, targetFilter);
-            foreach (Collider2D hit in hits)
+            using NativeArray<RaycastHit2D> hits = GetTargetsAhead(targetFilter);
+            foreach (RaycastHit2D hit in hits)
             {
-                if (hit.gameObject == gameObject || hit.gameObject == Spawner)
+                if (hit.collider.gameObject == gameObject || hit.collider.gameObject == Spawner)
                     continue;
 
-                if (hit.TryGetComponent(out Unit unit) && unit.IsActivated() && !unit.IsFullHealth())
+                if (hit.collider.TryGetComponent(out Unit unit) && unit.IsActivated() && unit is not UnitPawn)
                 {
-                    hits.Dispose();
+                    unitAhead = unit;
                     return true;
                 }
             }
 
-            hits.Dispose();
+            unitAhead = null;
             return false;
         }
 
         private void MoveForward()
         {
-            transform.position = new Vector3(
-                transform.position.x + (BaseUnitStat.Speed * Time.deltaTime * transform.localScale.x),
-                transform.position.y,
-                transform.position.z);
+            float targetX = transform.position.x + (BaseUnitStat.Speed * Time.deltaTime * transform.localScale.x);
+            transform.position = new Vector3(ClampToLevelBounds(targetX), transform.position.y, transform.position.z);
         }
     }
 }
