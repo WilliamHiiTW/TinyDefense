@@ -1,3 +1,4 @@
+using General.Units;
 using Manager;
 using UnityEngine;
 using UnityEngine.UI;
@@ -50,6 +51,12 @@ namespace General
             if (_spriteRenderer != null)
                 _spriteRenderer.sortingOrder += 100;
 
+            if (IsPawnSpawner() && GameManager.instance.ActivePlayerPawnCount >= GameManager.instance.MaxActivePawns)
+            {
+                Debug.Log("[UnitSpawner] Spawn failed: pawn limit reached");
+                return;
+            }
+
             if (GameManager.instance.PlayerGold < SpawnCost)
             {
                 Debug.Log("[UnitSpawner] Spawn failed: insufficient gold");
@@ -58,6 +65,12 @@ namespace General
 
             GameManager.instance.PlayerGold -= SpawnCost;
             _isSpawning = true;
+        }
+
+        /// <summary>True if this spawner produces Pawns specifically, so the pawn cap applies to it.</summary>
+        private bool IsPawnSpawner()
+        {
+            return SpawnPrefab != null && SpawnPrefab.GetComponent<UnitPawn>() != null;
         }
 
         private void SpawnUnit()
